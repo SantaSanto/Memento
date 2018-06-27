@@ -3,10 +3,16 @@
 */
 
 
-function buildID() {
-
-	var txDate = field('Date');
+function updateInterest() {
 	
-	return txDate.getFullYear();
+	var argAccount = arg('Account');
+	
+	var argActLst = argAccount.split(',');
+	
+	for(var argAct in argActLst) {
+		
+		alert(argAct);
+		
+	}
 	
 }
