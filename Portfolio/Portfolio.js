@@ -13,29 +13,24 @@ function updateInterest() {
 		
 		var prtflEnt = lib().find(argAct[i]);
 		
-		prtflEnt.sort(
-			function(a, b) {
-				var aDate = a.field('Date');
-				var bDate = b.field('Date');
-				
-				return (aDate - bDate);
-			}
-		);
+		sortByDate(prtflEnt);
 		
 		log(prtflEnt[0]);
 		
 	}
-	
-	function sortByDate(eLst) {
+}
+
+function sortByDate(eLst) {
 		
-		for(var i=0; i<eLst.length; i++) {
-			for(var j=0; j<eLst.length; j++) {
-				
-				var aDate = eLst[i].field('Date');
-				var bDate = eLst[j].field('Date');
-				
-			}
-		}		
-	}
-	
+	for(var i=0; i<eLst.length; i++) {
+	for(var j=0; j<eLst.length; j++) {				
+		var aDate = eLst[i].field('Date');
+		var bDate = eLst[j].field('Date');				
+		
+		if( (aDate - bDate) < 0 ) {					
+			var temp = eLst[i];
+			eLst[i] = eLst[j];
+			eLst[j] = temp;
+		}					
+	}}		
 }
