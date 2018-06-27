@@ -5,13 +5,15 @@
 
 function updateInterest() {
 	
-	var argAccount = arg('Account');
-	
-	var argActLst = argAccount.split(',');
-	
-	for(var argAct in argActLst) {
+	var argAccount = arg('Account');	
+
+	for(var argAct in argAccount) {
 		
 		alert(argAct);
+		
+		var prtflEnt = lib().find(argAct);
+		
+		alert(prtflEnt.length);
 		
 	}
 	
