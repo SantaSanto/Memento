@@ -9,11 +9,11 @@ function updateInterest() {
 
 	for(var argAct in argAccount) {
 		
-		alert(argAct);
+		log(argAct);
 		
 		var prtflEnt = lib().find(argAct);
 		
-		alert(prtflEnt.length);
+		log(prtflEnt.length);
 		
 	}
 	
