@@ -15,8 +15,20 @@ function updateInterest() {
 		
 		sortByDate(prtflEnt);
 		
+		var balance = 0;
+		
 		for(var j=0; j<prtflEnt.length; j++) {
-			prtflEnt[j].set('Sequence', j+1);
+			
+			var curEnt = prtflEnt[j];
+			
+			var amt curEnt.field('Amount');
+			
+			balance = balance + amt;
+			
+			curEnt.set('Sequence', j+1);
+			
+			curEnt.set('Balance', balance);
+			
 		}
 		
 		log('updateInterest - Ends ::' + argAct[i]);
