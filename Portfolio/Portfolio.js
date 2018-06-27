@@ -21,7 +21,7 @@ function updateInterest() {
 			
 			var curEnt = prtflEnt[j];
 			
-			var amt curEnt.field('Amount');
+			var amt = curEnt.field('Amount');
 			
 			balance = balance + amt;
 			
