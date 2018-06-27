@@ -18,12 +18,24 @@ function updateInterest() {
 				var aDate = a.field('Date');
 				var bDate = b.field('Date');
 				
-				return (a-b);
+				return (aDate - bDate);
 			}
 		);
 		
 		log(prtflEnt[0]);
 		
+	}
+	
+	function sortByDate(eLst) {
+		
+		for(var i=0; i<eLst.length; i++) {
+			for(var j=0; j<eLst.length; j++) {
+				
+				var aDate = eLst[i].field('Date');
+				var bDate = eLst[j].field('Date');
+				
+			}
+		}		
 	}
 	
 }
