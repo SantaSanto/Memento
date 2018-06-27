@@ -13,7 +13,16 @@ function updateInterest() {
 		
 		var prtflEnt = lib().find(argAct[i]);
 		
-		log(prtflEnt.length);
+		prtflEnt.sort(
+			function(a, b) {
+				var aDate = a.field('Date');
+				var bDate = b.field('Date');
+				
+				return (a-b);
+			}
+		);
+		
+		log(prtflEnt[0]);
 		
 	}
 	
