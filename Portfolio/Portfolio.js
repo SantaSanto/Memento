@@ -9,13 +9,17 @@ function updateInterest() {
 
 	for(var i=0; i<argAct.length; i++) {
 		
-		log(argAct[i]);
+		log('updateInterest - Starts ::' + argAct[i]);
 		
 		var prtflEnt = lib().find(argAct[i]);
 		
 		sortByDate(prtflEnt);
 		
-		log(prtflEnt[0]);
+		for(var j=0; j<prtflEnt.length; j++) {
+			prtflEnt[j].set('Sequence', j+1);
+		}
+		
+		log('updateInterest - Ends ::' + argAct[i]);
 		
 	}
 }
