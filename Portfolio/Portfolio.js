@@ -29,7 +29,7 @@ function updateInterest() {
 			
 			var amt  = curEnt.field('Amount');
 			var date = curEnt.field('Date');
-			var cat  = curEnt.field('Categoty');
+			var cat  = curEnt.field('Category');
 			
 			var month = date.getMonth();			
 			var times = timesArr[month];
