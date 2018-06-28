@@ -57,13 +57,14 @@ function updateInterest() {
 					var newInt = (prevBal * anuIntRate) + accInt;	
 					curEnt.set('Amount', fixed(newInt, 2));	
 					curEnt.set('Balance', fixed(prevBal, 2));	
-					prevBal = accBal + newInt;	
+					prevBal = prevBal + accBal + newInt;	
 				} else {
 					accInt = amt;	
-					prevBal = accBal + accInt;	
+					prevBal = prevBal + accBal + accInt;	
 				}			
 				
 				accInt = 0;
+				accBal = 0;
 			} 
 			
 			curEnt.set('Sequence', j+1);
