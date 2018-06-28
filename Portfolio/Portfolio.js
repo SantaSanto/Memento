@@ -19,7 +19,16 @@ function updateInterest() {
 		
 		sortByDate(prtflEnt);
 		
-		var anuIntRate = 0.07;		
+		var anuIntRate = 0.070;	
+
+		if(argAct[i] == 'PPF#S' || argAct[i] == 'PPF#S') {
+			anuIntRate = 0.0760;	
+		} else if(argAct[i] == 'SSA#P') {
+			anuIntRate = 0.0810;	
+		} else if(argAct[i] == 'EPF#S') { 
+			anuIntRate = 0.0855;	
+		}
+		
 		var monIntRate = anuIntRate / 12;		
 		
 		var accInt  = 0.0;
