@@ -43,11 +43,11 @@ function updateInterest() {
 			curEnt.set('Sequence', j+1);			
 			
 			if(cat == 'Interest') {
-				log(date + ' - Interest = ' + accInt)
-				curEnt.set('Balance', accInt);
+				log(date + ' - Interest = ' + fixed(accInt, 2))
+				curEnt.set('Balance', fixed(accInt, 2));
 				accInt = 0;
 			} else {
-				curEnt.set('Balance', recInt);
+				curEnt.set('Balance', fixed(recInt, 2));
 			}
 			
 		}
