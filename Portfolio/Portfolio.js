@@ -49,20 +49,20 @@ function updateInterest() {
 				
 				var recInt = (amt * monIntRate * times);			
 				accInt = accInt + recInt;
-				accBal = accBal + amt;		
-
-				curEnt.set('Balance', fixed(recInt, 2));	
+				accBal = accBal + amt;				
 				
 			} else if(cat == 'Interest') {
 				
 				if( (date - today) > 0 ) {
-					accInt = (prevBal * anuIntRate) + accInt;				
+					var newAmnt = (prevBal * anuIntRate) + accInt;	
+					curEnt.set('Amount', fixed(newAmnt, 2));	
+					curEnt.set('Balance', fixed(prevBal, 2));	
+					prevBal = accBal + newAmnt;	
 				} else {
 					accInt = amt;	
-				}
+					prevBal = accBal + accInt;	
+				}			
 				
-				curEnt.set('Balance', fixed(accInt, 2));
-				prevBal = accBal + accInt;	
 				accInt = 0;
 			} 
 			
