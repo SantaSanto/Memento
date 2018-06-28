@@ -46,15 +46,14 @@ function updateInterest() {
 				
 			} else if(cat == 'Interest') {
 				
-				accInt = (prevBal * anuIntRate) + accInt;	
-				prevBal = accBal + accInt;			
-
-				//curEnt.set('Balance', fixed(accInt, 2));		
-
 				if( (date - today) > 0 ) {
-					curEnt.set('Balance', fixed(accInt, 2));
+					accInt = (prevBal * anuIntRate) + accInt;				
+				} else {
+					accInt = amt;	
 				}
 				
+				curEnt.set('Balance', fixed(accInt, 2));
+				prevBal = accBal + accInt;	
 				accInt = 0;
 			} 
 			
