@@ -5,6 +5,8 @@
 
 function updateInterest() {
 	
+	var timesArr = [2, 1, 0, 11, 10, 9, 8, 7, 6, 5, 4, 3]
+	
 	var argAct = arg('Account');	
 
 	for(var i=0; i<argAct.length; i++) {
@@ -15,24 +17,27 @@ function updateInterest() {
 		
 		sortByDate(prtflEnt);
 		
-		var accBal = 0;
 		var accInt = 0;
 		
-		var anuIntRate = 7.0;
+		var anuIntRate = 0.07;
 		var monIntRate = anuIntRate / 12;
+		
+		monIntRate = monIntRate.toFixed(5);  
 		
 		for(var j=0; j<prtflEnt.length; j++) {
 			
 			var curEnt = prtflEnt[j];
 			
-			var amt = curEnt.field('Amount');
+			var amt  = curEnt.field('Amount');
+			var date = curEnt.field('Date');
 			
-			accInt += (accBal * monIntRate); 
+			var month = date.getMonth();			
+			var times = timesArr[month];
 			
-			accBal += (accInt + amt);
-			
-			curEnt.set('Sequence', j+1);
-			
+			accInt += (amt * monIntRate * times);		
+			accInt = accInt.toFixed(2);			
+		
+			curEnt.set('Sequence', j+1);			
 			curEnt.set('Balance', accInt);
 			
 		}
