@@ -19,9 +19,10 @@ function updateInterest() {
 		
 		var anuIntRate = 0.07;		
 		var monIntRate = anuIntRate / 12;		
-		//monIntRate = fixed(monIntRate, 5);  
 		
-		var accInt = 0.0;
+		var accInt  = 0.0;
+		var accBal  = 0.0;
+		var prevBal = 0.0;
 		
 		for(var j=0; j<prtflEnt.length; j++) {
 			
@@ -31,25 +32,28 @@ function updateInterest() {
 			var date = curEnt.field('Date');
 			var cat  = curEnt.field('Category');
 			
-			var month = date.getMonth();			
-			var times = timesArr[month];
-			
-			var recInt = (amt * monIntRate * times);			
-			//recInt = fixed(recInt, 2);	
+			if(cat == 'Deposit') {
+				var month = date.getMonth();			
+				var times = timesArr[month];				
+				
+				var recInt = (amt * monIntRate * times);			
+				accInt = accInt + recInt;
+				accBal = accBal + amt;		
 
-			accInt = accInt + recInt;
-			//accInt = fixed(accInt, 2);
-		
-			curEnt.set('Sequence', j+1);			
-			
-			if(cat == 'Interest') {
-				log(date + ' - Interest = ' + fixed(accInt, 2))
-				curEnt.set('Balance', fixed(accInt, 2));
+				curEnt.set('Balance', fixed(recInt, 2));	
+				
+			} else if(cat == 'Interest') {
+				
+				accInt = (prevBal * anuIntRate) + accInt;	
+				prevBal = accBal + accInt;	
+				
+				log(fixed(prevBal, 2));					
+				
+				curEnt.set('Balance', fixed(accInt, 2));				
 				accInt = 0;
-			} else {
-				curEnt.set('Balance', fixed(recInt, 2));
-			}
+			} 
 			
+			curEnt.set('Sequence', j+1);
 		}
 		
 		log('updateInterest - Ends ::' + argAct[i]);
