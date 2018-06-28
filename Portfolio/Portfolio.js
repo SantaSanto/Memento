@@ -21,7 +21,7 @@ function updateInterest() {
 		var monIntRate = anuIntRate / 12;		
 		monIntRate = fixed(monIntRate, 5);  
 		
-		var accInt = 0;
+		var accInt = 0.0;
 		
 		for(var j=0; j<prtflEnt.length; j++) {
 			
@@ -38,7 +38,7 @@ function updateInterest() {
 			recInt = fixed(recInt, 2);	
 
 			accInt = fixed(accInt, 2) + recInt;
-			accInt = fixed(accInt, 2);
+			//accInt = fixed(accInt, 2);
 		
 			curEnt.set('Sequence', j+1);			
 			
