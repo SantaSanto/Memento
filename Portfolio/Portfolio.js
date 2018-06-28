@@ -8,6 +8,8 @@ function updateInterest() {
 	var timesArr = [2, 1, 0, 11, 10, 9, 8, 7, 6, 5, 4, 3]
 	
 	var argAct = arg('Account');	
+	
+	var today = new Date();
 
 	for(var i=0; i<argAct.length; i++) {
 		
@@ -45,11 +47,14 @@ function updateInterest() {
 			} else if(cat == 'Interest') {
 				
 				accInt = (prevBal * anuIntRate) + accInt;	
-				prevBal = accBal + accInt;	
+				prevBal = accBal + accInt;			
+
+				//curEnt.set('Balance', fixed(accInt, 2));		
+
+				if( (date - today) > 0 ) {
+					curEnt.set('Balance', fixed(accInt, 2));
+				}
 				
-				log(fixed(prevBal, 2));					
-				
-				curEnt.set('Balance', fixed(accInt, 2));				
 				accInt = 0;
 			} 
 			
