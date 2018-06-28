@@ -37,8 +37,8 @@ function updateInterest() {
 			var recInt = (amt * monIntRate * times);			
 			recInt = fixed(recInt, 2);	
 
-			accInt = accInt + recInt;
-			log(date + ';' + accInt)
+			accInt = fixed(accInt, 2) + recInt;
+			accInt = fixed(accInt, 2);
 		
 			curEnt.set('Sequence', j+1);			
 			
@@ -47,7 +47,7 @@ function updateInterest() {
 				curEnt.set('Balance', accInt);
 				accInt = 0;
 			} else {
-				curEnt.set('Balance', 0);
+				curEnt.set('Balance', recInt);
 			}
 			
 		}
