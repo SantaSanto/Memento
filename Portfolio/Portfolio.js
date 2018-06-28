@@ -15,7 +15,11 @@ function updateInterest() {
 		
 		sortByDate(prtflEnt);
 		
-		var balance = 0;
+		var accBal = 0;
+		var accInt = 0;
+		
+		var anuIntRate = 7.0;
+		var monIntRate = anuIntRate / 12;
 		
 		for(var j=0; j<prtflEnt.length; j++) {
 			
@@ -23,11 +27,13 @@ function updateInterest() {
 			
 			var amt = curEnt.field('Amount');
 			
-			balance = balance + amt;
+			accInt += (accBal * monIntRate); 
+			
+			accBal += (accInt + amt);
 			
 			curEnt.set('Sequence', j+1);
 			
-			curEnt.set('Balance', balance);
+			curEnt.set('Balance', accInt);
 			
 		}
 		
