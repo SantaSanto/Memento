@@ -21,11 +21,15 @@ function updateInterest() {
 		
 		var anuIntRate = 0.070;	
 
-		if(argAct[i] == 'PPF#S' || argAct[i] == 'PPF#S') {
+		if(argAct[i] == 'PPF#S') {
+			anuIntRate = 0.0760;
+		} else if(argAct[i] == 'PPF#L') {
 			anuIntRate = 0.0760;	
 		} else if(argAct[i] == 'SSA#P') {
 			anuIntRate = 0.0810;	
-		} else if(argAct[i] == 'EPF#S') { 
+		} else if(argAct[i] == 'EPF#S Employee') { 
+			anuIntRate = 0.0855;	
+		} else if(argAct[i] == 'EPF#S Company') { 
 			anuIntRate = 0.0855;	
 		}
 		
