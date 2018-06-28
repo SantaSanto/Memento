@@ -17,8 +17,6 @@ function updateInterest() {
 		
 		sortByDate(prtflEnt);
 		
-		var accInt = 0;
-		
 		var anuIntRate = 0.07;
 		var monIntRate = anuIntRate / 12;
 		
@@ -34,8 +32,9 @@ function updateInterest() {
 			var month = date.getMonth();			
 			var times = timesArr[month];
 			
-			accInt += (amt * monIntRate * times);		
+			var accInt = (amt * monIntRate * times);			
 			accInt = fixed(accInt, 2);			
+			log(amt + ';' + month + ';' + monIntRate + ';' + times)
 		
 			curEnt.set('Sequence', j+1);			
 			curEnt.set('Balance', accInt);
