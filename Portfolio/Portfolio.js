@@ -22,7 +22,7 @@ function updateInterest() {
 		var anuIntRate = 0.07;
 		var monIntRate = anuIntRate / 12;
 		
-		monIntRate = monIntRate.toFixed(5);  
+		monIntRate = fixed(monIntRate, 5);  
 		
 		for(var j=0; j<prtflEnt.length; j++) {
 			
@@ -35,7 +35,7 @@ function updateInterest() {
 			var times = timesArr[month];
 			
 			accInt += (amt * monIntRate * times);		
-			accInt = accInt.toFixed(2);			
+			accInt = fixed(accInt, 2);			
 		
 			curEnt.set('Sequence', j+1);			
 			curEnt.set('Balance', accInt);
@@ -45,6 +45,10 @@ function updateInterest() {
 		log('updateInterest - Ends ::' + argAct[i]);
 		
 	}
+}
+
+function fixed(x, n) {
+  return Number.parseFloat(x).toFixed(n);
 }
 
 function sortByDate(eLst) {
