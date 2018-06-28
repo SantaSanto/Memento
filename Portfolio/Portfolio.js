@@ -17,10 +17,11 @@ function updateInterest() {
 		
 		sortByDate(prtflEnt);
 		
-		var anuIntRate = 0.07;
-		var monIntRate = anuIntRate / 12;
-		
+		var anuIntRate = 0.07;		
+		var monIntRate = anuIntRate / 12;		
 		monIntRate = fixed(monIntRate, 5);  
+		
+		var accInt = 0;
 		
 		for(var j=0; j<prtflEnt.length; j++) {
 			
@@ -28,16 +29,26 @@ function updateInterest() {
 			
 			var amt  = curEnt.field('Amount');
 			var date = curEnt.field('Date');
+			var cat  = curEnt.field('Categoty');
 			
 			var month = date.getMonth();			
 			var times = timesArr[month];
 			
-			var accInt = (amt * monIntRate * times);			
-			accInt = fixed(accInt, 2);			
-			log(amt + ';' + month + ';' + monIntRate + ';' + times)
+			var recInt = (amt * monIntRate * times);			
+			recInt = fixed(recInt, 2);	
+
+			accInt = accInt + recInt;
+			log(date + ';' + accInt)
 		
 			curEnt.set('Sequence', j+1);			
-			curEnt.set('Balance', accInt);
+			
+			if(cat == 'Interest') {
+				log(date + ' - Interest = ' + accInt)
+				curEnt.set('Balance', accInt);
+				accInt = 0;
+			} else {
+				curEnt.set('Balance', 0);
+			}
 			
 		}
 		
