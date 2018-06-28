@@ -19,7 +19,7 @@ function updateInterest() {
 		
 		var anuIntRate = 0.07;		
 		var monIntRate = anuIntRate / 12;		
-		monIntRate = fixed(monIntRate, 5);  
+		//monIntRate = fixed(monIntRate, 5);  
 		
 		var accInt = 0.0;
 		
@@ -35,9 +35,9 @@ function updateInterest() {
 			var times = timesArr[month];
 			
 			var recInt = (amt * monIntRate * times);			
-			recInt = fixed(recInt, 2);	
+			//recInt = fixed(recInt, 2);	
 
-			accInt = fixed(accInt, 2) + recInt;
+			accInt = accInt + recInt;
 			//accInt = fixed(accInt, 2);
 		
 			curEnt.set('Sequence', j+1);			
