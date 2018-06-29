@@ -60,18 +60,18 @@ function updateInterest() {
 				if( (date - today) > 0 ) {
 					var newInt = (prevBal * anuIntRate) + accInt;	
 					curEnt.set('Amount', fixed(newInt, 2));	
-					curEnt.set('Balance', fixed(prevBal, 2));	
-					prevBal = prevBal + accBal + newInt;	
+					prevBal = prevBal + accBal + newInt;						
 				} else {
 					accInt = amt;	
 					prevBal = prevBal + accBal + accInt;	
 				}			
 				
+				curEnt.set('Balance', fixed(prevBal, 2));
 				accInt = 0;
 				accBal = 0;
 			} 
 			
-			curEnt.set('Sequence', j+1);
+			//curEnt.set('Sequence', j+1);
 		}
 		
 		log('updateInterest - Ends ::' + argAct[i]);
