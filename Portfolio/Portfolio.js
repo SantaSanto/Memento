@@ -2,6 +2,43 @@
 	Memento DB - Portfolio JS Library.
 */
 
+function updateStatus() {
+	
+	var today = new Date();
+	
+	var prtflEnt = lib().entries();
+	
+	for(var i=0; i<prtflEnt.length; i++) {
+		
+		var curEnt = prtflEnt[i];
+		
+		var date = curEnt.field('Date');
+		var cat  = curEnt.field('Category');
+		
+		var isFuture = false;
+		if( (date - today) > 0 ) {
+			isFuture = true;
+		}
+		
+		var curStatus;
+		if(cat == 'Deposit' && !isFuture) {
+			curStatus = 'Saved';
+		} else 
+		if(cat == 'Deposit' && isFuture) {
+			curStatus = 'Planned';
+		} else 
+		if(cat == 'Interest' && !isFuture) {
+			curStatus = 'Earned';
+		} else 
+		if(cat == 'Interest' && isFuture) {
+			curStatus = 'Expected';
+		} 
+		
+		curEnt.set('Status', curStatus);
+	}	
+}
+
+
 
 function updateInterest() {
 	
