@@ -146,12 +146,11 @@ function fetchInterest(instrument, finYear) {
 	var key = instrument + " - " + finYear;	
 	var irLib = libByName('Interest Rate').find(key);
 	
+	var air = 0;
 	if(irLib.length == 1) {
 		var irEnt = irLib[0];
-		var air = irEnt.field('Rate');
-	} else {
-		return 7.0;
-	}
+		air = irEnt.field('Rate');
+	} 
 	
 	return air;
 }
