@@ -103,8 +103,9 @@ function updateInterest() {
 				if( (date - today) > 0 ) {
 					var newInt = (prevBal * air) + accInt;	
 					curEnt.set('Amount', fixed(newInt, 2));					
-					prevBal = prevBal + accBal + newInt;	
-					curEnt.set('AIR', fixed(air, 2));
+					prevBal = prevBal + accBal + newInt;
+					var calAir = air * 100;					
+					curEnt.set('AIR', fixed(calAir, 2));
 				} else {
 					accInt = amt;				
 					prevBal = prevBal + accBal + accInt;	
