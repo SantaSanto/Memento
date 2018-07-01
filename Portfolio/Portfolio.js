@@ -35,6 +35,12 @@ function updateStatus() {
 		} 
 		
 		curEnt.set('Status', curStatus);
+		
+		if(isFuture) {
+			curEnt.set('Timeline', 'Projected');
+		} else {
+			curEnt.set('Timeline', 'Actual');
+		}
 	}	
 }
 
