@@ -153,7 +153,8 @@ function fetchInterest(instrument, finYear) {
 	var air = 0;
 	if(irLib.length == 1) {
 		var irEnt = irLib[0];
-		air = irEnt.field('Rate');
+		airFloat = irEnt.field('Rate');
+		air = fixed((airFloat / 100), 4) 
 	} 
 	
 	return air;
