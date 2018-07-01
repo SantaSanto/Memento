@@ -144,8 +144,14 @@ function sortByDate(eLst) {
 function fetchInterest(instrument, finYear) {
 	
 	var key = instrument + " - " + finYear;	
-	var irEnt = libByName('Interest Rate').find(key);
-	var air = irEnt.field('Rate');
+	var irLib = libByName('Interest Rate').find(key);
+	
+	if(irLib.length == 1) {
+		var irEnt = irLib[0];
+		var air = irEnt.field('Rate');
+	} else {
+		return 7.0;
+	}
 	
 	return air;
 }
