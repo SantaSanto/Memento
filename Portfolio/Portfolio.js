@@ -56,7 +56,7 @@ function updateInterest() {
 		
 		sortByDate(prtflEnt);
 		
-		var anuIntRate = 0.070;	
+		/*var anuIntRate = 0.070;	
 
 		if(argAct[i] == 'PPF#S') {
 			anuIntRate = 0.0760;
@@ -70,7 +70,7 @@ function updateInterest() {
 			anuIntRate = 0.0855;	
 		}
 		
-		var monIntRate = anuIntRate / 12;		
+		var monIntRate = anuIntRate / 12; */	
 		
 		var accInt  = 0.0;
 		var accBal  = 0.0;
@@ -88,6 +88,7 @@ function updateInterest() {
 			var fy   = curEnt.field('Financial Year');
 			
 			var air = fetchInterest(ins, fy);
+			var monIntRate = air / 12;
 						
 			if(cat == 'Deposit') {
 				var month = date.getMonth();			
@@ -108,7 +109,7 @@ function updateInterest() {
 					accInt = amt;				
 					prevBal = prevBal + accBal + accInt;	
 					var calAir = (accInt / accBal) * 100;
-					curEnt.set('AIR', fixed(air, 2));
+					curEnt.set('AIR', fixed(calAir, 2));
 				}			
 				
 				curEnt.set('Balance', fixed(prevBal, 2));
