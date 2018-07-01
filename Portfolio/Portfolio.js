@@ -84,6 +84,11 @@ function updateInterest() {
 			var date = curEnt.field('Date');
 			var cat  = curEnt.field('Category');
 			
+			var ins  = curEnt.field('Instrument');
+			var fy   = curEnt.field('Financial Year');
+			
+			var air = fetchInterest(ins, fy);
+						
 			if(cat == 'Deposit') {
 				var month = date.getMonth();			
 				var times = timesArr[month];				
@@ -104,6 +109,7 @@ function updateInterest() {
 				}			
 				
 				curEnt.set('Balance', fixed(prevBal, 2));
+				curEnt.set('AIR', fixed(air, 2));
 				accInt = 0;
 				accBal = 0;
 			} 
@@ -133,4 +139,13 @@ function sortByDate(eLst) {
 			eLst[j] = temp;
 		}					
 	}}		
+}
+
+function fetchInterest(instrument, finYear) {
+	
+	var key = instrument + " - " + finYear;	
+	var irEnt = libByName('Interest Rate').find(key);
+	var air = irEnt.field('Rate');
+	
+	return air;
 }
