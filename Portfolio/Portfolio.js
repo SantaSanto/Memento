@@ -107,9 +107,10 @@ function updateInterest() {
 					var calAir = air * 100;					
 					curEnt.set('AIR', fixed(calAir, 2));
 				} else {
-					accInt = amt;				
-					prevBal = prevBal + accBal + accInt;	
-					var calAir = (accInt / accBal) * 100;
+					accInt = amt;
+					var newBal = prevBal + accBal;
+					var calAir = ((accInt * 100) / newBal) ;
+					prevBal = newBal + accInt;					
 					curEnt.set('AIR', fixed(calAir, 2));
 				}			
 				
