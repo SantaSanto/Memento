@@ -86,7 +86,9 @@ function updateInterest() {
 				
 				var recInt = (amt * monIntRate * times);			
 				accInt = accInt + recInt;
-				accBal = accBal + amt;				
+				accBal = accBal + amt;		
+
+				curEnt.set('Balance', 0);
 				
 			} else if(cat == 'Interest') {
 				
